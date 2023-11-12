@@ -3,7 +3,7 @@ const Todo = require("../models/todo");
 module.exports = {
   getAllTodo: async (req, res) => {
     try {
-      const todo = await Todo.find();
+      const todo = await Todo.find().populate("userID", ["_id", "username"]);
 
       res.status(200).json({
         message: "berhasil mendapatkan semua data",

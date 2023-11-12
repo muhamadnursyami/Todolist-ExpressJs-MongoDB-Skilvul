@@ -26,6 +26,21 @@ module.exports = {
       res.status(400).send(error);
     }
   },
+
+  getUserTodos: async (req, res) => {
+    const { id } = req.params;
+    try {
+      const todo = await Todo.find({ userID: id });
+
+      res.json({
+        message: "berhasil mendapatakan Todo Berdasarkan user",
+        data: todo,
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(400).send(error);
+    }
+  },
   createUser: async (req, res) => {
     const data = req.body;
     try {

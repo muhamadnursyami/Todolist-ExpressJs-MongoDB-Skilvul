@@ -11,8 +11,12 @@ const todoSchema = new mongoose.Schema({
     enum: [true, false],
     default: false,
   },
+  userID: {
+    type: mongoose.ObjectId,
+    ref: "User",
+  },
 });
 
-const Todo = mongoose.model("todo", todoSchema);
+const Todo = mongoose.model("Todo", todoSchema);
 
 module.exports = Todo;
