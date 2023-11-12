@@ -43,4 +43,22 @@ module.exports = {
       res.status(400).send(error);
     }
   },
+  editTodoById: async (req, res) => {
+    const { id } = req.params;
+    const { value, status } = req.body;
+    try {
+      const editTodo = await Todo.findOneAndUpdate(
+        { _id: id },
+        { value, status },
+        { new: true, runValidators: true }
+      );
+      res.json({
+        message: "berhasil update todo by id",
+        editTodo,
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(400).send(error);
+    }
+  },
 };

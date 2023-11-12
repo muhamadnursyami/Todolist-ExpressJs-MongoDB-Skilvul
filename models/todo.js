@@ -6,7 +6,11 @@ const todoSchema = new mongoose.Schema({
     minlength: [3, "Panjang todo minimal 3 karakter"],
     required: [true, "Value harus diisi"],
   },
-  status: { type: Boolean, required: true },
+  status: {
+    type: Boolean,
+    enum: [true, false],
+    default: false,
+  },
 });
 
 const Todo = mongoose.model("todo", todoSchema);
