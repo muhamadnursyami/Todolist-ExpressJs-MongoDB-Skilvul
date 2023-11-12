@@ -61,4 +61,17 @@ module.exports = {
       res.status(400).send(error);
     }
   },
+  deleteTodoById: async (req, res) => {
+    const { id } = req.params;
+
+    try {
+      await Todo.findByIdAndDelete({ _id: id });
+      res.json({
+        message: "berhasil menghapus todo by id",
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(400).send(error);
+    }
+  },
 };
