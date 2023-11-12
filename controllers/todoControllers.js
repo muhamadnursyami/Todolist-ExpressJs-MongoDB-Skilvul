@@ -74,4 +74,15 @@ module.exports = {
       res.status(400).send(error);
     }
   },
+  deleteAllTodo: async (req, res) => {
+    try {
+      await Todo.deleteMany({});
+      res.json({
+        message: "berhasil menghapus semua",
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(400).send(error);
+    }
+  },
 };

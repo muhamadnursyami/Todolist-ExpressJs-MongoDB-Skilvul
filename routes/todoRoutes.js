@@ -5,6 +5,7 @@ const {
   createTodo,
   editTodoById,
   deleteTodoById,
+  deleteAllTodo,
 } = require("../controllers/todoControllers");
 const route = express.Router();
 
@@ -13,5 +14,6 @@ route.get("/:id", getTodoById);
 route.post("/", createTodo);
 route.put("/:id", editTodoById);
 route.delete("/:id", deleteTodoById);
+route.delete("/", deleteAllTodo);
 
 module.exports = route;
