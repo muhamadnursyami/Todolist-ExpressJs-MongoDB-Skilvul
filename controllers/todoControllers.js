@@ -9,7 +9,15 @@ module.exports = {
       data: todo,
     });
   },
-  getTodoById: () => {},
+  getTodoById: async (req, res) => {
+    const { id } = req.params;
+    const todo = await Todo.findById(id);
+
+    res.json({
+      message: "berhasil mendapatkan data berdasarkan id",
+      data: todo,
+    });
+  },
   createTodo: async (req, res) => {
     const todo = req.body;
 
