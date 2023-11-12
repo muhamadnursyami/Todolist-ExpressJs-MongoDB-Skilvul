@@ -1,4 +1,5 @@
 const express = require("express");
+const verifyToken = require("../middleware/auth");
 const {
   getAllTodo,
   getTodoById,
@@ -10,10 +11,10 @@ const {
 const route = express.Router();
 
 route.get("/", getAllTodo);
-route.get("/:id", getTodoById);
-route.post("/", createTodo);
-route.put("/:id", editTodoById);
-route.delete("/:id", deleteTodoById);
+route.get("/:id", verifyToken, getTodoById);
+route.post("/", verifyToken, createTodo);
+route.put("/:id", verifyToken, editTodoById);
+route.delete("/:id", verifyToken, deleteTodoById);
 route.delete("/", deleteAllTodo);
 
 module.exports = route;
